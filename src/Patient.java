@@ -1,3 +1,4 @@
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class Patient {
@@ -7,7 +8,7 @@ public class Patient {
     private String streetAddress, city, province;
     private LocalDate birthday;
 
-    public Patient(String firstName, String lastName, String phoneNum, String streetAddress, String city, String province, LocalDate birthday) {
+    public Patient(String firstName, String lastName, String phoneNum, String streetAddress, String city, String province, LocalDate birthday) throws SQLException {
         setFirstName(firstName);
         setLastName(lastName);
         setPhoneNum(phoneNum);
@@ -15,6 +16,7 @@ public class Patient {
         setCity(city);
         setProvince(province);
         setBirthday(birthday);
+        patientID = DBUtility.insertNewPatient(this);
     }
 
     public int getPatientID() {
