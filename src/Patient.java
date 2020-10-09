@@ -30,7 +30,10 @@ public class Patient {
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        if (firstName.matches("[A-Z][a-zA-Z]*[-]?[A-z]*?"))
+            this.firstName = firstName;
+        else
+            throw new IllegalArgumentException("First name must start with a capital and have more than 1 letter");
     }
 
     public String getLastName() {
@@ -38,7 +41,11 @@ public class Patient {
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        if (lastName.matches("[A-Z][a-zA-Z]*[-]?[A-z]*?"))
+            this.lastName = lastName;
+        else
+            throw new IllegalArgumentException("Last name must start with a capital and have more than 1 letter");
+
     }
 
     public String getPhoneNum() {
@@ -46,7 +53,10 @@ public class Patient {
     }
 
     public void setPhoneNum(String phoneNum) {
-        this.phoneNum = phoneNum;
+        if (phoneNum.matches("\\(?[2-9]\\d{2}\\)?[-.\\s]?[2-9]\\d{2}[-.\\s]?\\d{4}"))
+            this.phoneNum = phoneNum;
+        else
+            throw new IllegalArgumentException("Phone number must match North American Dialing plan");
     }
 
     public String getStreetAddress() {
